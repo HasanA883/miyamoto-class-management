@@ -21,12 +21,13 @@ import javafx.stage.Stage;public class Miyamoto extends Application {
 
         Scene scene = new Scene(layout, 300, 200);
 
-        primaryStage.setTitle("Simple JavaFX App");
+        primaryStage.setTitle("Starter Project");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
 
     public static void main(String[] args) {
+        Database.initializeDatabase();
         launch(args); // Triggers start()
     }
 
