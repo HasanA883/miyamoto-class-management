@@ -73,5 +73,6 @@ public class Customer {
 
     public void setLoyaltyProgram(int loyaltyProgram) {
         this.loyaltyProgram = loyaltyProgram;
+
     }
 }
