@@ -1,7 +1,6 @@
-package com.btm495.miytamoto.objects;
+package com.btm495.miyamoto.objects;
 
 public class Address {
-
 
     private int addressId;
     private int customerId;
@@ -93,5 +92,13 @@ public class Address {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public boolean validateAddress() {
+        return false;
+    }
+
+    public String formatAddress() {
+        return null;
     }
 }

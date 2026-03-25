@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane stylesheets="@styles.css" prefHeight="500.0" prefWidth="840.0"
+            xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.btm495.miyamoto.controllers.LoginScreenController">
+   <children>
+      <HBox AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0"
+            AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+         <children>
+
+            <!-- ── Left: Brand Panel ─────────────────────── -->
+            <VBox prefWidth="310.0" styleClass="brand-panel" alignment="CENTER" spacing="10.0"
+                  style="-fx-padding: 52 36 52 36;">
+               <children>
+                  <Label styleClass="brand-mono" text="M"/>
+                  <Region prefHeight="4.0"/>
+                  <Label styleClass="brand-name" text="Miyamoto"/>
+                  <Label styleClass="brand-sub" text="Sushi Academy"/>
+                  <Region prefHeight="10.0"/>
+                  <Region styleClass="brand-divider"/>
+                  <Region prefHeight="6.0"/>
+                  <Label styleClass="brand-tagline" text="Where tradition" wrapText="true"/>
+                  <Label styleClass="brand-tagline" text="meets artistry."/>
+               </children>
+            </VBox>
+
+            <!-- ── Right: Login Form ─────────────────────── -->
+            <VBox prefWidth="530.0" alignment="CENTER" spacing="0.0"
+                  style="-fx-background-color: #F5F4F0; -fx-padding: 48 58 48 58;">
+               <children>
+                  <Label text="Welcome back" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #1C1C1A;"/>
+                  <Label text="Sign in to your account" styleClass="text-muted"
+                         style="-fx-padding: 4 0 28 0;"/>
+
+                  <!-- Email -->
+                  <VBox spacing="4.0" style="-fx-padding: 0 0 14 0;">
+                     <Label text="Email Address" styleClass="field-label"/>
+                     <TextField fx:id="emailField" promptText="your@email.com" prefWidth="414.0"/>
+                  </VBox>
+
+                  <!-- Password -->
+                  <VBox spacing="4.0" style="-fx-padding: 0 0 14 0;">
+                     <Label text="Password" styleClass="field-label"/>
+                     <PasswordField fx:id="passwordField" promptText="Enter your password" prefWidth="414.0"/>
+                  </VBox>
+
+                  <!-- Employee ID -->
+                  <VBox spacing="4.0" style="-fx-padding: 0 0 26 0;">
+                     <Label text="Employee ID" styleClass="field-label"/>
+                     <TextField fx:id="employeeIdField" promptText="e.g. EMP001  (leave blank for customer login)"
+                                prefWidth="414.0"/>
+                     <Label text="Staff only — leave blank to sign in as a customer."
+                            styleClass="hint-label"/>
+                  </VBox>
+
+                  <!-- Buttons -->
+                  <HBox spacing="12.0">
+                     <Button fx:id="loginButton" text="Sign In" onAction="#handleLogin"
+                             styleClass="btn-accent" prefWidth="198.0" prefHeight="42.0"/>
+                     <Button text="Create Account" onAction="#handleRegister"
+                             styleClass="btn-outline" prefWidth="198.0" prefHeight="42.0"/>
+                  </HBox>
+
+                  <Label text="Demo staff:  admin@miyamoto.com  /  EMP001  /  admin123"
+                         styleClass="hint-label" style="-fx-padding: 18 0 0 0;"/>
+               </children>
+            </VBox>
+
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

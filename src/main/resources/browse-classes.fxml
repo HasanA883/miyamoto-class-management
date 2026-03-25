@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane stylesheets="@styles.css" prefHeight="640.0" prefWidth="990.0"
+            style="-fx-background-color: #F5F4F0;"
+            xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.btm495.miyamoto.controllers.BrowseClassesController">
+   <children>
+      <VBox AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0"
+            AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+         <children>
+
+            <!-- Topbar -->
+            <HBox styleClass="topbar" prefHeight="66.0" alignment="CENTER_LEFT">
+               <Region styleClass="topbar-accent" prefHeight="66.0"/>
+               <VBox style="-fx-padding: 0 0 0 18;">
+                  <Label styleClass="topbar-title" text="Browse Classes"/>
+                  <Label styleClass="topbar-subtitle" text="Miyamoto Sushi Academy"/>
+               </VBox>
+            </HBox>
+
+            <!-- Content -->
+            <VBox VBox.vgrow="ALWAYS" spacing="14.0" style="-fx-padding: 18 20 18 20;">
+               <children>
+
+                  <HBox alignment="CENTER_LEFT" spacing="12.0">
+                     <Label text="Select a class and click  Book  to reserve your spot."
+                            styleClass="page-hint"/>
+                  </HBox>
+
+                  <TableView fx:id="classesTable" VBox.vgrow="ALWAYS" prefHeight="480.0">
+                     <columns>
+                        <TableColumn fx:id="typeColumn"        text="Class Type"        prefWidth="140.0"/>
+                        <TableColumn fx:id="descriptionColumn" text="Description"        prefWidth="230.0"/>
+                        <TableColumn fx:id="startTimeColumn"   text="Date &amp; Start"  prefWidth="160.0"/>
+                        <TableColumn fx:id="endTimeColumn"     text="End Time"           prefWidth="120.0"/>
+                        <TableColumn fx:id="priceColumn"       text="Price / Person"     prefWidth="105.0"/>
+                        <TableColumn fx:id="chefColumn"        text="Chef"               prefWidth="110.0"/>
+                        <TableColumn fx:id="spotsColumn"       text="Max Spots"          prefWidth="90.0"/>
+                     </columns>
+                     <placeholder>
+                        <Label text="No classes available right now. Please check back soon!"
+                               styleClass="text-muted"/>
+                     </placeholder>
+                  </TableView>
+
+                  <HBox spacing="12.0">
+                     <Button text="Book Selected Class" onAction="#bookClass"
+                             styleClass="btn-accent" prefWidth="200.0" prefHeight="38.0"/>
+                     <Button text="Back" onAction="#goBack"
+                             styleClass="btn-outline" prefWidth="100.0" prefHeight="38.0"/>
+                  </HBox>
+
+               </children>
+            </VBox>
+
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

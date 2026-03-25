@@ -1,6 +1,7 @@
-package com.btm495.miytamoto.objects;
+package com.btm495.miyamoto.objects;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class Employee {
     private String employeeId;
@@ -11,9 +12,9 @@ public class Employee {
     private LocalDateTime schedule;
     private String employeeRole;
     private LocalDateTime hireDate;
-    private Boolean iaActive;
+    private Boolean isActive;
 
-    public Employee(String firstName, String lastName, String emailAddress, int phoneNumber, LocalDateTime schedule, String employeeRole, LocalDateTime hireDate, Boolean iaActive) {
+    public Employee(String firstName, String lastName, String emailAddress, int phoneNumber, LocalDateTime schedule, String employeeRole, LocalDateTime hireDate, Boolean isActive) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.emailAddress = emailAddress;
@@ -21,7 +22,7 @@ public class Employee {
         this.schedule = schedule;
         this.employeeRole = employeeRole;
         this.hireDate = hireDate;
-        this.iaActive = iaActive;
+        this.isActive = isActive;
     }
 
     public String getEmployeeId() {
@@ -88,11 +89,30 @@ public class Employee {
         this.hireDate = hireDate;
     }
 
-    public Boolean getIaActive() {
-        return iaActive;
+    public Boolean getIsActive() {
+        return isActive;
     }
 
-    public void setIaActive(Boolean iaActive) {
-        this.iaActive = iaActive;
+    public void setIsActive(Boolean isActive) {
+        this.isActive = isActive;
+    }
+
+    public List<Booking> viewSchedule() {
+        return null;
+    }
+
+    public boolean markClassCompleted() {
+        return false;
+    }
+
+    public void sendNotification() {
+    }
+
+    public boolean createBooking() {
+        return false;
+    }
+
+    public boolean updateAvailability() {
+        return false;
     }
 }

@@ -1,4 +1,4 @@
-package com.btm495.miytamoto.objects;
+package com.btm495.miyamoto.objects;
 
 import java.time.LocalDateTime;
 
@@ -84,5 +84,29 @@ public class Notification {
 
     public void setSubject(String subject) {
         this.subject = subject;
+    }
+
+    public boolean send() {
+        return false;
+    }
+
+    public boolean queue() {
+        return false;
+    }
+
+    public boolean resend() {
+        return false;
+    }
+
+    public boolean detectTrigger() {
+        return false;
+    }
+
+    public boolean retrieveInfo() {
+        return false;
+    }
+
+    public boolean logStatus() {
+        return false;
     }
 }

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane stylesheets="@styles.css" prefHeight="600.0" prefWidth="540.0"
+            style="-fx-background-color: #F5F4F0;"
+            xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.btm495.miyamoto.controllers.RegistrationFormController">
+   <children>
+      <VBox AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0"
+            AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+         <children>
+
+            <!-- Topbar -->
+            <HBox styleClass="topbar" prefHeight="66.0" alignment="CENTER_LEFT">
+               <Region styleClass="topbar-accent" prefHeight="66.0"/>
+               <VBox style="-fx-padding: 0 0 0 18;">
+                  <Label styleClass="topbar-title" text="Create Account"/>
+                  <Label styleClass="topbar-subtitle" text="Miyamoto Sushi Academy"/>
+               </VBox>
+            </HBox>
+
+            <!-- Form Card -->
+            <VBox VBox.vgrow="ALWAYS" alignment="CENTER" style="-fx-padding: 24 40 24 40;">
+               <children>
+                  <VBox styleClass="card" spacing="12.0" prefWidth="420.0"
+                        style="-fx-padding: 32 30 32 30;">
+                     <children>
+                        <Label text="Your Details" styleClass="section-title"/>
+                        <Label text="Fill in the form below to get started."
+                               styleClass="page-hint" style="-fx-padding: 0 0 6 0;"/>
+
+                        <VBox spacing="4.0">
+                           <Label text="Full Name" styleClass="field-label"/>
+                           <TextField fx:id="nameField" promptText="First and last name" prefWidth="360.0"/>
+                        </VBox>
+                        <VBox spacing="4.0">
+                           <Label text="Address" styleClass="field-label"/>
+                           <TextField fx:id="addressField" promptText="Street address" prefWidth="360.0"/>
+                        </VBox>
+                        <VBox spacing="4.0">
+                           <Label text="Phone Number" styleClass="field-label"/>
+                           <TextField fx:id="phoneField" promptText="Digits only  (e.g. 5141234567)" prefWidth="360.0"/>
+                        </VBox>
+                        <VBox spacing="4.0">
+                           <Label text="Email Address" styleClass="field-label"/>
+                           <TextField fx:id="emailField" promptText="your@email.com" prefWidth="360.0"/>
+                        </VBox>
+                        <HBox spacing="14.0">
+                           <VBox spacing="4.0" HBox.hgrow="ALWAYS">
+                              <Label text="Password" styleClass="field-label"/>
+                              <PasswordField fx:id="passwordField" promptText="Create a password"
+                                            prefWidth="170.0"/>
+                           </VBox>
+                           <VBox spacing="4.0" HBox.hgrow="ALWAYS">
+                              <Label text="Confirm Password" styleClass="field-label"/>
+                              <PasswordField fx:id="confirmPasswordField" promptText="Confirm password"
+                                            prefWidth="170.0"/>
+                           </VBox>
+                        </HBox>
+
+                        <HBox spacing="12.0" style="-fx-padding: 10 0 0 0;">
+                           <Button fx:id="createAccountButton" text="Create Account"
+                                   onAction="#createAccount"
+                                   styleClass="btn-accent" prefWidth="190.0" prefHeight="40.0"/>
+                           <Button text="Back to Login" onAction="#goBack"
+                                   styleClass="btn-outline" prefWidth="150.0" prefHeight="40.0"/>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane stylesheets="@styles.css" prefHeight="500.0" prefWidth="580.0"
+            style="-fx-background-color: #F5F4F0;"
+            xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.btm495.miyamoto.controllers.EmployeeDashboardController">
+   <children>
+      <VBox AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0"
+            AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+         <children>
+
+            <!-- Topbar -->
+            <HBox styleClass="topbar" prefHeight="66.0" alignment="CENTER_LEFT">
+               <Region styleClass="topbar-accent" prefHeight="66.0"/>
+               <VBox style="-fx-padding: 0 0 0 18;">
+                  <Label styleClass="topbar-title" text="Employee Portal"/>
+                  <Label fx:id="welcomeLabel" styleClass="topbar-subtitle" text="Miyamoto Sushi Academy"/>
+               </VBox>
+            </HBox>
+
+            <!-- Centered card -->
+            <VBox VBox.vgrow="ALWAYS" alignment="CENTER" style="-fx-padding: 36 60 36 60;">
+               <children>
+                  <VBox styleClass="card" spacing="0.0" prefWidth="420.0" style="-fx-padding: 0;">
+                     <children>
+
+                        <!-- Card header band -->
+                        <VBox style="-fx-background-color: #1C1C1A; -fx-background-radius: 12 12 0 0;
+                                    -fx-padding: 22 26 22 26;" spacing="2.0">
+                           <Label text="Staff Dashboard" style="-fx-font-size: 17px; -fx-font-weight: bold; -fx-text-fill: #F0EDE8;"/>
+                           <Label text="Select an action to continue." style="-fx-font-size: 11px; -fx-text-fill: #7A7874;"/>
+                        </VBox>
+
+                        <!-- Nav items -->
+                        <VBox spacing="0.0" style="-fx-padding: 16 20 16 20;">
+                           <children>
+                              <Button text="Manage Class Availability"
+                                      onAction="#manageAvailability"
+                                      styleClass="btn-accent"
+                                      prefWidth="380.0" prefHeight="48.0"
+                                      style="-fx-alignment: CENTER_LEFT; -fx-font-size: 13px;"/>
+                              <Region prefHeight="10.0"/>
+                              <Button text="View All Bookings"
+                                      onAction="#viewAllBookings"
+                                      styleClass="btn-primary"
+                                      prefWidth="380.0" prefHeight="48.0"
+                                      style="-fx-alignment: CENTER_LEFT; -fx-font-size: 13px;"/>
+                              <Region prefHeight="18.0"/>
+                              <Separator/>
+                              <Region prefHeight="14.0"/>
+                              <Button text="Sign Out"
+                                      onAction="#logout"
+                                      styleClass="btn-muted"
+                                      prefWidth="380.0" prefHeight="40.0"
+                                      style="-fx-font-size: 12px;"/>
+                           </children>
+                        </VBox>
+
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

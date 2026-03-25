@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane stylesheets="@styles.css" prefHeight="560.0" prefWidth="980.0"
+            style="-fx-background-color: #F5F4F0;"
+            xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.btm495.miyamoto.controllers.CustomerDashboardController">
+   <children>
+      <VBox AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0"
+            AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+         <children>
+
+            <!-- Topbar -->
+            <HBox styleClass="topbar" prefHeight="66.0" alignment="CENTER_LEFT">
+               <Region styleClass="topbar-accent" prefHeight="66.0"/>
+               <VBox style="-fx-padding: 0 0 0 18;">
+                  <Label styleClass="topbar-title" text="Customer Portal"/>
+                  <Label fx:id="welcomeLabel" styleClass="topbar-subtitle" text="Welcome!"/>
+               </VBox>
+            </HBox>
+
+            <!-- Body -->
+            <HBox VBox.vgrow="ALWAYS">
+               <children>
+
+                  <!-- ── Left Sidebar ─────────────────────── -->
+                  <VBox styleClass="sidebar" prefWidth="248.0" spacing="4.0"
+                        style="-fx-padding: 28 14 20 14;">
+                     <children>
+                        <!-- Avatar + Name -->
+                        <VBox alignment="CENTER" spacing="8.0" style="-fx-padding: 0 0 18 0;">
+                           <StackPane prefWidth="56.0" prefHeight="56.0" styleClass="avatar">
+                              <Label fx:id="avatarLabel" text="?" styleClass="avatar-text"/>
+                           </StackPane>
+                           <Label fx:id="nameLabel" text="Customer" styleClass="sidebar-name"/>
+                           <Label fx:id="emailLabel" text="" styleClass="sidebar-email"/>
+                        </VBox>
+
+                        <Region styleClass="sidebar-divider" style="-fx-margin: 0 0 8 0;"/>
+
+                        <Label text="NAVIGATION" styleClass="sidebar-section"
+                               style="-fx-padding: 8 0 6 16;"/>
+
+                        <Button text="  Browse &amp; Book Classes" onAction="#browseClasses"
+                                styleClass="sidebar-btn-cta" prefWidth="220.0"/>
+                        <Button text="  My Bookings" onAction="#myBookings"
+                                styleClass="sidebar-btn" prefWidth="220.0"/>
+
+                        <!-- Spacer pushes logout to bottom -->
+                        <Region VBox.vgrow="ALWAYS"/>
+
+                        <Region styleClass="sidebar-divider"/>
+                        <Button text="  Sign Out" onAction="#logout"
+                                styleClass="sidebar-btn" prefWidth="220.0"
+                                style="-fx-text-fill: #8A4545;"/>
+                     </children>
+                  </VBox>
+
+                  <!-- ── Right: Notification Inbox ─────────── -->
+                  <VBox VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS"
+                        spacing="10.0" style="-fx-padding: 22 22 18 22;">
+                     <children>
+                        <!-- Inbox header -->
+                        <HBox spacing="10.0" alignment="CENTER_LEFT" style="-fx-padding: 0 0 6 0;">
+                           <Label text="Notifications" styleClass="section-title"/>
+                           <Label fx:id="unreadBadge" text="" styleClass="badge"/>
+                           <Region HBox.hgrow="ALWAYS"/>
+                           <Button text="Mark All Read" onAction="#markAllRead"
+                                   styleClass="btn-outline btn-sm"/>
+                           <Button text="Refresh" onAction="#refreshNotifications"
+                                   styleClass="btn-outline btn-sm"/>
+                        </HBox>
+
+                        <ListView fx:id="notificationsListView" VBox.vgrow="ALWAYS"
+                                  prefHeight="390.0"/>
+
+                        <HBox spacing="10.0">
+                           <Button text="View Message" onAction="#viewSelectedNotification"
+                                   styleClass="btn-primary btn-sm" prefHeight="32.0"/>
+                           <Button text="Mark as Read" onAction="#markSelectedRead"
+                                   styleClass="btn-info btn-sm" prefHeight="32.0"/>
+                        </HBox>
+                     </children>
+                  </VBox>
+
+               </children>
+            </HBox>
+
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

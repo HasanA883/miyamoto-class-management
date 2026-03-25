@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane stylesheets="@styles.css" prefHeight="640.0" prefWidth="960.0"
+            style="-fx-background-color: #F5F4F0;"
+            xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.btm495.miyamoto.controllers.MyBookingsController">
+   <children>
+      <VBox AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0"
+            AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+         <children>
+
+            <!-- Topbar -->
+            <HBox styleClass="topbar" prefHeight="66.0" alignment="CENTER_LEFT">
+               <Region styleClass="topbar-accent" prefHeight="66.0"/>
+               <VBox style="-fx-padding: 0 0 0 18;">
+                  <Label fx:id="titleLabel" styleClass="topbar-title" text="My Bookings"/>
+                  <Label styleClass="topbar-subtitle" text="Miyamoto Sushi Academy"/>
+               </VBox>
+            </HBox>
+
+            <!-- Content -->
+            <VBox VBox.vgrow="ALWAYS" spacing="14.0" style="-fx-padding: 18 20 18 20;">
+               <children>
+
+                  <TableView fx:id="bookingsTable" VBox.vgrow="ALWAYS" prefHeight="490.0">
+                     <columns>
+                        <TableColumn fx:id="idColumn"           text="ID"           prefWidth="52.0"/>
+                        <TableColumn fx:id="typeColumn"         text="Class Type"    prefWidth="160.0"/>
+                        <TableColumn fx:id="dateColumn"         text="Date &amp; Time" prefWidth="180.0"/>
+                        <TableColumn fx:id="durationColumn"     text="Duration"      prefWidth="100.0"/>
+                        <TableColumn fx:id="participantsColumn" text="Participants"  prefWidth="92.0"/>
+                        <TableColumn fx:id="totalColumn"        text="Total"         prefWidth="90.0"/>
+                        <TableColumn fx:id="statusColumn"       text="Status"        prefWidth="115.0"/>
+                        <TableColumn fx:id="ratingColumn"       text="Rating"        prefWidth="70.0"/>
+                     </columns>
+                     <placeholder>
+                        <Label text="No bookings found." styleClass="text-muted"/>
+                     </placeholder>
+                  </TableView>
+
+                  <HBox spacing="10.0">
+                     <Button text="Cancel Booking" onAction="#cancelBooking"
+                             styleClass="btn-danger" prefWidth="148.0" prefHeight="36.0"/>
+                     <Button fx:id="addReviewButton" text="Add Review" onAction="#addReview"
+                             styleClass="btn-warning" prefWidth="126.0" prefHeight="36.0"/>
+                     <Button fx:id="markCompletedButton" text="Mark Completed" onAction="#markCompleted"
+                             styleClass="btn-success" prefWidth="148.0" prefHeight="36.0"/>
+                     <Button fx:id="filterToggleButton" text="Show Upcoming Only" onAction="#toggleFilter"
+                             styleClass="btn-outline" prefWidth="168.0" prefHeight="36.0"/>
+                     <Region HBox.hgrow="ALWAYS"/>
+                     <Button text="Back" onAction="#goBack"
+                             styleClass="btn-dark" prefWidth="96.0" prefHeight="36.0"/>
+                  </HBox>
+
+               </children>
+            </VBox>
+
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

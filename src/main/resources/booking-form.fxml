@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.SpinnerValueFactory?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane stylesheets="@styles.css" prefHeight="560.0" prefWidth="640.0"
+            style="-fx-background-color: #F5F4F0;"
+            xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.btm495.miyamoto.controllers.BookingFormController">
+   <children>
+      <VBox AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0"
+            AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+         <children>
+
+            <!-- Topbar -->
+            <HBox styleClass="topbar" prefHeight="66.0" alignment="CENTER_LEFT">
+               <Region styleClass="topbar-accent" prefHeight="66.0"/>
+               <VBox style="-fx-padding: 0 0 0 18;">
+                  <Label styleClass="topbar-title" text="Book a Class"/>
+                  <Label styleClass="topbar-subtitle" text="Miyamoto Sushi Academy"/>
+               </VBox>
+            </HBox>
+
+            <!-- Card -->
+            <VBox VBox.vgrow="ALWAYS" alignment="CENTER" style="-fx-padding: 22 48 22 48;">
+               <children>
+                  <VBox styleClass="card" prefWidth="520.0" spacing="0.0" style="-fx-padding: 0;">
+                     <children>
+
+                        <!-- Card top band -->
+                        <HBox style="-fx-background-color: #EDEAE4; -fx-background-radius: 12 12 0 0;
+                                    -fx-padding: 16 22 16 22; -fx-border-color: transparent transparent #E2DDD7 transparent;
+                                    -fx-border-width: 0 0 1 0;">
+                           <Label text="Class Details" styleClass="section-title"/>
+                        </HBox>
+
+                        <VBox spacing="14.0" style="-fx-padding: 20 22 20 22;">
+                           <children>
+                              <!-- Two-column detail grid -->
+                              <HBox spacing="20.0">
+                                 <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                                    <VBox spacing="2.0">
+                                       <Label text="CLASS TYPE" styleClass="hint-label"/>
+                                       <Label fx:id="classTypeLabel" styleClass="section-title"/>
+                                    </VBox>
+                                    <VBox spacing="2.0">
+                                       <Label text="DESCRIPTION" styleClass="hint-label"/>
+                                       <Label fx:id="descriptionLabel" wrapText="true" prefWidth="220.0"
+                                              style="-fx-font-size: 12px; -fx-text-fill: #696865;"/>
+                                    </VBox>
+                                    <VBox spacing="2.0">
+                                       <Label text="MATERIALS PROVIDED" styleClass="hint-label"/>
+                                       <Label fx:id="materialsLabel" wrapText="true" prefWidth="220.0"
+                                              style="-fx-font-size: 12px; -fx-text-fill: #696865;"/>
+                                    </VBox>
+                                 </VBox>
+                                 <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                                    <VBox spacing="2.0">
+                                       <Label text="START TIME" styleClass="hint-label"/>
+                                       <Label fx:id="dateTimeLabel"
+                                              style="-fx-font-size: 12px; -fx-text-fill: #1C1C1A;"/>
+                                    </VBox>
+                                    <VBox spacing="2.0">
+                                       <Label text="END TIME" styleClass="hint-label"/>
+                                       <Label fx:id="endTimeLabel"
+                                              style="-fx-font-size: 12px; -fx-text-fill: #1C1C1A;"/>
+                                    </VBox>
+                                    <VBox spacing="2.0">
+                                       <Label text="CHEF" styleClass="hint-label"/>
+                                       <Label fx:id="chefLabel"
+                                              style="-fx-font-size: 12px; -fx-text-fill: #1C1C1A;"/>
+                                    </VBox>
+                                    <VBox spacing="2.0">
+                                       <Label text="PRICE PER PERSON" styleClass="hint-label"/>
+                                       <Label fx:id="priceLabel" styleClass="text-accent"
+                                              style="-fx-font-size: 15px;"/>
+                                    </VBox>
+                                 </VBox>
+                              </HBox>
+
+                              <Separator/>
+
+                              <!-- Participants + Total -->
+                              <HBox spacing="30.0" alignment="CENTER_LEFT">
+                                 <VBox spacing="4.0">
+                                    <Label text="PARTICIPANTS" styleClass="hint-label"/>
+                                    <Spinner fx:id="participantsSpinner" prefWidth="110.0">
+                                       <valueFactory>
+                                          <SpinnerValueFactory.IntegerSpinnerValueFactory min="1" max="20" initialValue="1"/>
+                                       </valueFactory>
+                                    </Spinner>
+                                 </VBox>
+                                 <VBox spacing="4.0">
+                                    <Label text="TOTAL (BEFORE TAX)" styleClass="hint-label"/>
+                                    <Label fx:id="totalCostLabel" styleClass="price-label"/>
+                                 </VBox>
+                              </HBox>
+
+                              <HBox spacing="12.0" style="-fx-padding: 6 0 0 0;">
+                                 <Button fx:id="confirmButton" text="Confirm Booking"
+                                         onAction="#confirmBooking"
+                                         styleClass="btn-accent" prefWidth="200.0" prefHeight="42.0"/>
+                                 <Button text="Back" onAction="#goBack"
+                                         styleClass="btn-outline" prefWidth="100.0" prefHeight="42.0"/>
+                              </HBox>
+                           </children>
+                        </VBox>
+
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
