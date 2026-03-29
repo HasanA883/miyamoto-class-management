@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane stylesheets="@styles.css" prefHeight="500.0" prefWidth="840.0"
+<AnchorPane stylesheets="@styles.css" prefHeight="520.0" prefWidth="840.0"
             xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.btm495.miyamoto.controllers.LoginScreenController">
    <children>
@@ -28,44 +28,79 @@
             </VBox>
 
             <!-- ── Right: Login Form ─────────────────────── -->
-            <VBox prefWidth="530.0" alignment="CENTER" spacing="0.0"
+            <VBox prefWidth="530.0" alignment="TOP_CENTER" spacing="0.0"
                   style="-fx-background-color: #F5F4F0; -fx-padding: 48 58 48 58;">
                <children>
+
                   <Label text="Welcome back" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #1C1C1A;"/>
                   <Label text="Sign in to your account" styleClass="text-muted"
-                         style="-fx-padding: 4 0 28 0;"/>
+                         style="-fx-padding: 4 0 20 0;"/>
 
-                  <!-- Email -->
-                  <VBox spacing="4.0" style="-fx-padding: 0 0 14 0;">
-                     <Label text="Email Address" styleClass="field-label"/>
-                     <TextField fx:id="emailField" promptText="your@email.com" prefWidth="414.0"/>
-                  </VBox>
-
-                  <!-- Password -->
-                  <VBox spacing="4.0" style="-fx-padding: 0 0 14 0;">
-                     <Label text="Password" styleClass="field-label"/>
-                     <PasswordField fx:id="passwordField" promptText="Enter your password" prefWidth="414.0"/>
-                  </VBox>
-
-                  <!-- Employee ID -->
-                  <VBox spacing="4.0" style="-fx-padding: 0 0 26 0;">
-                     <Label text="Employee ID" styleClass="field-label"/>
-                     <TextField fx:id="employeeIdField" promptText="e.g. EMP001  (leave blank for customer login)"
-                                prefWidth="414.0"/>
-                     <Label text="Staff only — leave blank to sign in as a customer."
-                            styleClass="hint-label"/>
-                  </VBox>
-
-                  <!-- Buttons -->
-                  <HBox spacing="12.0">
-                     <Button fx:id="loginButton" text="Sign In" onAction="#handleLogin"
-                             styleClass="btn-accent" prefWidth="198.0" prefHeight="42.0"/>
-                     <Button text="Create Account" onAction="#handleRegister"
-                             styleClass="btn-outline" prefWidth="198.0" prefHeight="42.0"/>
+                  <!-- ── Portal Type Tabs ── -->
+                  <HBox spacing="0.0" style="-fx-padding: 0 0 24 0; -fx-background-color: transparent;">
+                     <Button fx:id="customerTabBtn" text="Customer"
+                             onAction="#showCustomerLogin"
+                             styleClass="btn-accent"
+                             prefWidth="199.0" prefHeight="36.0"
+                             style="-fx-background-radius: 4 0 0 4; -fx-border-radius: 4 0 0 4;"/>
+                     <Button fx:id="adminTabBtn" text="Admin / Staff"
+                             onAction="#showAdminLogin"
+                             styleClass="btn-outline"
+                             prefWidth="199.0" prefHeight="36.0"
+                             style="-fx-background-radius: 0 4 4 0; -fx-border-radius: 0 4 4 0;"/>
                   </HBox>
 
-                  <Label text="Demo staff:  admin@miyamoto.com  /  EMP001  /  admin123"
-                         styleClass="hint-label" style="-fx-padding: 18 0 0 0;"/>
+                  <!-- ── Customer Login Form ── -->
+                  <VBox fx:id="customerForm" spacing="0.0">
+
+                     <!-- Email -->
+                     <VBox spacing="4.0" style="-fx-padding: 0 0 14 0;">
+                        <Label text="Email Address" styleClass="field-label"/>
+                        <TextField fx:id="emailField" promptText="your@email.com" prefWidth="414.0"/>
+                     </VBox>
+
+                     <!-- Password -->
+                     <VBox spacing="4.0" style="-fx-padding: 0 0 26 0;">
+                        <Label text="Password" styleClass="field-label"/>
+                        <PasswordField fx:id="passwordField" promptText="Enter your password" prefWidth="414.0"/>
+                     </VBox>
+
+                     <!-- Buttons -->
+                     <HBox spacing="12.0">
+                        <Button fx:id="loginButton" text="Sign In" onAction="#handleLogin"
+                                styleClass="btn-accent" prefWidth="198.0" prefHeight="42.0"/>
+                        <Button text="Create Account" onAction="#handleRegister"
+                                styleClass="btn-outline" prefWidth="198.0" prefHeight="42.0"/>
+                     </HBox>
+
+                  </VBox>
+
+                  <!-- ── Admin Login Form ── -->
+                  <VBox fx:id="adminForm" spacing="0.0" visible="false" managed="false">
+
+                     <!-- Email -->
+                     <VBox spacing="4.0" style="-fx-padding: 0 0 14 0;">
+                        <Label text="Email Address" styleClass="field-label"/>
+                        <TextField fx:id="adminEmailField" promptText="your@email.com" prefWidth="414.0"/>
+                     </VBox>
+
+                     <!-- Password -->
+                     <VBox spacing="4.0" style="-fx-padding: 0 0 26 0;">
+                        <Label text="Password" styleClass="field-label"/>
+                        <PasswordField fx:id="adminPasswordField" promptText="Enter your password" prefWidth="414.0"/>
+                     </VBox>
+
+                     <!-- Buttons -->
+                     <HBox spacing="12.0">
+                        <Button text="Sign In as Admin" onAction="#handleLogin"
+                                styleClass="btn-accent" prefWidth="198.0" prefHeight="42.0"/>
+                     </HBox>
+
+                     <Label text="Demo:  admin@miyamoto.com  /  admin123"
+                            styleClass="hint-label" style="-fx-padding: 14 0 0 0;"/>
+
+                  </VBox>
+
                </children>
             </VBox>
 

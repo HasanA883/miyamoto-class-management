@@ -47,7 +47,7 @@
                         <HBox spacing="8.0">
                            <Button text="Load Selected" onAction="#loadSelected"
                                    styleClass="btn-info btn-sm" prefHeight="34.0"/>
-                           <Button fx:id="toggleStatusButton" text="Deactivate"
+                           <Button fx:id="toggleStatusButton" text="Cancel"
                                    onAction="#toggleStatus"
                                    styleClass="btn-danger btn-sm" prefHeight="34.0"/>
                            <Button fx:id="filterToggleButton" text="Active / Upcoming"
@@ -136,6 +136,13 @@
                                        <Label text="Materials / Ingredients" styleClass="field-label"/>
                                        <TextField fx:id="materialsField"
                                                   promptText="e.g. Rice, nori, salmon, soy sauce"
+                                                  prefWidth="354.0"/>
+                                    </VBox>
+
+                                    <VBox spacing="4.0">
+                                       <Label text="Address" styleClass="field-label"/>
+                                       <TextField fx:id="addressField"
+                                                  promptText="Class location address"
                                                   prefWidth="354.0"/>
                                     </VBox>
 

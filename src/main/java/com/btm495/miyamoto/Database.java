@@ -112,6 +112,7 @@ public class Database {
             // Schema migrations — safe to run on every startup
             try { stmt.execute("ALTER TABLE employees ADD COLUMN password TEXT"); } catch (SQLException ignored) {}
             try { stmt.execute("ALTER TABLE availability ADD COLUMN duration TEXT"); } catch (SQLException ignored) {}
+            try { stmt.execute("ALTER TABLE availability ADD COLUMN address TEXT DEFAULT '382 Av. Victoria, Westmount, QC H3Z 2N4'"); } catch (SQLException ignored) {}
 
             // Seed default employee
             stmt.execute("""
@@ -209,6 +210,32 @@ public class Database {
         return null;
     }
 
+    public static Employee getEmployeeByEmailAndPassword(String email, String password) {
+        String sql = "SELECT * FROM employees WHERE emailAddress = ? AND password = ? AND isActive = 1";
+        try (Connection conn = connect(); PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, email);
+            ps.setString(2, password);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                Employee e = new Employee(
+                    rs.getString("firstName"),
+                    rs.getString("lastName"),
+                    rs.getString("emailAddress"),
+                    parsePhone(rs.getString("phoneNumber")),
+                    null,
+                    rs.getString("employeeRole"),
+                    null,
+                    rs.getInt("isActive") == 1
+                );
+                e.setEmployeeId(rs.getString("employeeId"));
+                return e;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     // ===== AVAILABILITY =====
 
     public static List<Availability> getAllAvailability() {
@@ -261,7 +288,7 @@ public class Database {
     }
 
     public static boolean insertAvailability(Availability a) {
-        String sql = "INSERT INTO availability (availableStartTime, availableEndTime, numberOfBookings, bookingType, description, basePrice, defaultChef, materials, duration) VALUES (?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO availability (availableStartTime, availableEndTime, numberOfBookings, bookingType, description, basePrice, defaultChef, materials, duration, address) VALUES (?,?,?,?,?,?,?,?,?,?)";
         try (Connection conn = connect(); PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, a.getAvailableStartTime() != null ? a.getAvailableStartTime().toString() : null);
             ps.setString(2, a.getAvailableEndTime() != null ? a.getAvailableEndTime().toString() : null);
@@ -272,6 +299,7 @@ public class Database {
             ps.setString(7, a.getDefaultChef());
             ps.setString(8, a.getMaterials());
             ps.setString(9, a.getDurationText());
+            ps.setString(10, a.getAddress() != null ? a.getAddress() : "382 Av. Victoria, Westmount, QC H3Z 2N4");
             ps.executeUpdate();
             return true;
         } catch (SQLException e) {
@@ -281,7 +309,7 @@ public class Database {
     }
 
     public static boolean updateAvailabilityRecord(Availability a) {
-        String sql = "UPDATE availability SET availableStartTime=?, availableEndTime=?, numberOfBookings=?, bookingType=?, description=?, basePrice=?, defaultChef=?, materials=?, duration=? WHERE availabilityId=?";
+        String sql = "UPDATE availability SET availableStartTime=?, availableEndTime=?, numberOfBookings=?, bookingType=?, description=?, basePrice=?, defaultChef=?, materials=?, duration=?, address=? WHERE availabilityId=?";
         try (Connection conn = connect(); PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setString(1, a.getAvailableStartTime() != null ? a.getAvailableStartTime().toString() : null);
             ps.setString(2, a.getAvailableEndTime() != null ? a.getAvailableEndTime().toString() : null);
@@ -292,7 +320,8 @@ public class Database {
             ps.setString(7, a.getDefaultChef());
             ps.setString(8, a.getMaterials());
             ps.setString(9, a.getDurationText());
-            ps.setInt(10, a.getAvailabilityId());
+            ps.setString(10, a.getAddress() != null ? a.getAddress() : "382 Av. Victoria, Westmount, QC H3Z 2N4");
+            ps.setInt(11, a.getAvailabilityId());
             ps.executeUpdate();
             return true;
         } catch (SQLException e) {
@@ -741,6 +770,7 @@ public class Database {
         a.setAvailabilityId(rs.getInt("availabilityId"));
         a.setActive(rs.getInt("isActive") == 1);
         try { a.setDurationText(rs.getString("duration")); } catch (SQLException ignored) {}
+        try { a.setAddress(rs.getString("address")); } catch (SQLException ignored) {}
         return a;
     }
 

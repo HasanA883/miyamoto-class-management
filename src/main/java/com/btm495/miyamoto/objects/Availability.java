@@ -15,6 +15,7 @@ public class Availability {
     private LocalDateTime defaultDuration;
     private String materials;
     private String durationText;
+    private String address;
     private boolean active;
 
     public Availability(LocalDateTime availableStartTime, LocalDateTime availableEndTime, int numberOfBookings, String bookingType, String description, Double basePrice, String defaultChef, LocalDateTime defaultDuration, String materials) {
@@ -62,6 +63,9 @@ public class Availability {
 
     public String getDurationText() { return durationText; }
     public void setDurationText(String durationText) { this.durationText = durationText; }
+
+    public String getAddress() { return address; }
+    public void setAddress(String address) { this.address = address; }
 
     public boolean isActive() { return active; }
     public void setActive(boolean active) { this.active = active; }

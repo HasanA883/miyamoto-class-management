@@ -37,7 +37,7 @@ public class PaymentController {
     public void initialize() {
         pending = SessionManager.getPendingBooking();
 
-        paymentMethodCombo.setItems(FXCollections.observableArrayList("Credit Card", "Debit Card", "Cash"));
+        paymentMethodCombo.setItems(FXCollections.observableArrayList("Credit Card", "Debit Card"));
         paymentMethodCombo.getSelectionModel().selectedItemProperty().addListener((obs, old, val) -> {
             boolean isCard = "Credit Card".equals(val) || "Debit Card".equals(val);
             cardDetailsPane.setVisible(isCard);

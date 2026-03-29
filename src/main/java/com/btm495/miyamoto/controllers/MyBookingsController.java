@@ -63,8 +63,13 @@ public class MyBookingsController {
             // Hide customer-only buttons
             addReviewButton.setVisible(false);
             addReviewButton.setManaged(false);
+        } else {
+            // Hide employee-only buttons
             markCompletedButton.setVisible(false);
             markCompletedButton.setManaged(false);
+        }
+
+        if (isEmployee) {
 
             // Enable inline editing for date (availability slot) and participants
             bookingsTable.setEditable(true);

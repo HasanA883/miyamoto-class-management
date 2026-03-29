@@ -13,8 +13,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class BrowseClassesController {
 
@@ -48,7 +50,10 @@ public class BrowseClassesController {
     }
 
     private void loadClasses() {
-        List<Availability> classes = Database.getAllActiveAvailability();
+        LocalDateTime now = LocalDateTime.now();
+        List<Availability> classes = Database.getAllActiveAvailability().stream()
+            .filter(a -> a.getAvailableEndTime() == null || a.getAvailableEndTime().isAfter(now))
+            .collect(Collectors.toList());
         classesTable.setItems(FXCollections.observableArrayList(classes));
     }
 

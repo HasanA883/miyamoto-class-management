@@ -38,12 +38,14 @@ public class ManageAvailabilityController {
     @FXML private TextField maxSpotsField;
     @FXML private TextField defaultChefField;
     @FXML private TextField materialsField;
+    @FXML private TextField addressField;
     @FXML private Button saveButton;
     @FXML private Button toggleStatusButton;
     @FXML private Button filterToggleButton;
 
     private static final DateTimeFormatter START_FMT = DateTimeFormatter.ofPattern("MMM dd yyyy, HH:mm");
     private static final DateTimeFormatter TIME_FMT = DateTimeFormatter.ofPattern("HH:mm");
+    private static final String DEFAULT_ADDRESS = "382 Av. Victoria, Westmount, QC H3Z 2N4";
     private int editingId = -1;
     private boolean showActiveOnly = false;
 
@@ -68,7 +70,7 @@ public class ManageAvailabilityController {
         availabilityTable.getSelectionModel().selectedItemProperty().addListener((obs, old, selected) -> {
             if (selected != null) {
                 if (selected.isActive()) {
-                    toggleStatusButton.setText("Deactivate");
+                    toggleStatusButton.setText("Cancel");
                     toggleStatusButton.setStyle("-fx-background-color: #C0392B; -fx-text-fill: white; -fx-cursor: hand;");
                 } else {
                     toggleStatusButton.setText("Activate");
@@ -77,6 +79,7 @@ public class ManageAvailabilityController {
             }
         });
 
+        clearForm(null);
         loadTable();
     }
 
@@ -147,11 +150,15 @@ public class ManageAvailabilityController {
         int spots = 0;
         try { spots = Integer.parseInt(maxSpotsField.getText().trim()); } catch (NumberFormatException ignored) {}
 
+        String address = addressField.getText().trim();
+        if (address.isEmpty()) address = DEFAULT_ADDRESS;
+
         Availability a = new Availability(start, end, spots, type,
             descriptionField.getText().trim(), price,
             defaultChefField.getText().trim(), null,
             materialsField.getText().trim());
         a.setDurationText(duration);
+        a.setAddress(address);
 
         boolean success;
         if (editingId > 0) {
@@ -190,6 +197,7 @@ public class ManageAvailabilityController {
         descriptionField.setText(nvl(selected.getDescription()));
         defaultChefField.setText(nvl(selected.getDefaultChef()));
         materialsField.setText(nvl(selected.getMaterials()));
+        addressField.setText(selected.getAddress() != null ? selected.getAddress() : DEFAULT_ADDRESS);
         durationField.setText(nvl(selected.getDurationText()));
         basePriceField.setText(selected.getBasePrice() != null ? String.valueOf(selected.getBasePrice()) : "");
         maxSpotsField.setText(String.valueOf(selected.getNumberOfBookings()));
@@ -219,6 +227,7 @@ public class ManageAvailabilityController {
         maxSpotsField.clear();
         defaultChefField.clear();
         materialsField.clear();
+        addressField.setText(DEFAULT_ADDRESS);
     }
 
     @FXML
