@@ -96,8 +96,6 @@
                                 styleClass="btn-accent" prefWidth="198.0" prefHeight="42.0"/>
                      </HBox>
 
-                     <Label text="Demo:  admin@miyamoto.com  /  admin123"
-                            styleClass="hint-label" style="-fx-padding: 14 0 0 0;"/>
 
                   </VBox>
 
